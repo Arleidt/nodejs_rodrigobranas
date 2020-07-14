@@ -1,11 +1,19 @@
-var max = 10000
+var config = require('./config.js');
 
-//console.log(generate());
-//exports.generate = function (){ ou this.generate = function (){ também vão funcionar
-  module.exports.generate = function (){
-  return Math.floor(Math.random() * max);
+module.exports.generate = function (){
+  return Math.floor(Math.random() * config.max);
 };
 
+
+//var max = 10000
+//module.exports.generate = function (){
+ // return Math.floor(Math.random() * global.max);
+//};
+//console.log(generate());
+//exports.generate = function (){ ou this.generate = function (){ também vão funcionar
+  //module.exports.generate = function (){
+  //return Math.floor(Math.random() * max);
+//};
 //apenas module exports é retornado da função require, se alterar os outros ficarão desvinculados
 //var SerialGenerators = function(){
   // varSerialGeneratos = function() com uma função construtora
