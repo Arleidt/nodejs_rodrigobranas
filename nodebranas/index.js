@@ -1,9 +1,9 @@
+//global.max = 10000 sem var só com max estarei definindo como global do mesmo jeito
 var serialGenerator = require ('./serialGenerator.js');
 //var serialGenerator = require ('/Users/arlei.duarte/Documents/estudos-nodejs/nodebranas/serialGenerator.js');
 
 //console.log(serialGenerator.generate());
 console.log(serialGenerator.generate());
-
 
 /*var SerialGenerators = require('./serialGenerators.js');
 var serialGenerators =  new SerialGenerators();
