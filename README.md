@@ -1,2 +1,2 @@
-# estudos-nodejs
-estudos de node.js
+# estudo-nodejs
+Treinamento em node.js
