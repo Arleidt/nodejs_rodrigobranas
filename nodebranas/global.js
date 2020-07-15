@@ -1,2 +1,4 @@
-console.log(Object.keys(global));
-console.log(arguments);
+//retorna um array com as chaves do objeto global.
+Object.keys(global).forEach(function  (value) {
+      console.log(value);
+});
