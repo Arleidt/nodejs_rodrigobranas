@@ -19,6 +19,18 @@ var contatos = [
   {id: 3, nome: "Mariana", telefone: "9999-9999", data: new Date(), operadora: operadoras[2]}
 ];
 
+//autorizando headers
+app.interceptors( function(req, res, next){
+  console.log('executando interceptor 1');
+  res.setHeader('Acess-Control-Allow-Origin', '*');
+  res.setHeader('Acess-Control-Allow-Headers', 'Content- Type');
+  next();
+})
+app.interceptors( function(req, res, next){
+  console.log('executando interceptor 2');
+  res.setHeader('Content-Type', 'application/json;charset=UTF-8');
+  next();
+})
 //registros de serviços
 //chaveamento direto registros de rotas no router.js
 // get passa um path operadoras e função
@@ -32,7 +44,17 @@ app.get('/contatos', function(req, res){
   res.end();
 });
 
+//linha 51 convertendo JSON novamente em um objeto
 app.post('/contatos', function(req, res){
+  var contato = req.body;
+  //console.log((contato));
+  contatos.push(JSON.parse(contato));
+  res.end();
+});
+
+// requisiçao options preflight segurança xml http request sempre vai uma req antes do post que faz validação e
+//precisa ser tratada. Passar options autorizar preflight 
+app.options('/contatos', function(req, res){
   res.end();
 });
 
