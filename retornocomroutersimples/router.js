@@ -9,7 +9,6 @@ var createRouter = function (port) {
       POST: {}
   }; 
 
-
 //get passa path e função para ser invoda no http
   var get = function (path, fn) {
     //registrando pat no get {} e dizendo que a funcao dele é fn
@@ -28,8 +27,6 @@ var createRouter = function (port) {
             //mapeia as funções registradas no http get e post
             routes[req.method] [req.url] (req, res);
     }).listen(port);
-
-
 
   //expondo requisição
       return {
