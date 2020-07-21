@@ -1,2 +1,1 @@
-# estudo-nodejs
-Treinamento em node.js
+Repositório de aula de node.js do Rodrigo Branas no youtube.
