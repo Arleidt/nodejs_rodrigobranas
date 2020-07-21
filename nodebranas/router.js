@@ -4,17 +4,30 @@ var http = require('http');
 //criação função createRouter que recebe a porta onde vou abrir o meu roteador
 var createRouter = function (port) {
   //habilitar gets registrando rotas em algum lugar
-  var routes = {
+ /** var routes = {
       GET: {},
       POST: {}
-  };
-     
+  }; */ 
+  
+  // passando funções por api dinamicamente
+  var api = {};
+  var routes = {};
+  var methods = ['GET', 'POST'];
 
-  //get passa path e função
+  //criar dinamicamente cada um dos metodos nas rotas registrando get e post
+  methods.forEach(function  (method)  {
+        routes[method] = {};
+        //função para ser invocada no http
+        api[method.toLowerCase()] = function (path, fn){
+              routes[method] [path] = fn;
+        };
+  });
+
+  /**get passa path e função para ser invoda no http
   var get = function (path, fn) {
     //registrando pat no get {} e dizendo que a funcao dele é fn
       routes['GET'][path] = fn;
-  };  
+  }; */ 
 
   var post = function (path, fn) {
     //registrando pat no get {} e dizendo que a funcao dele é fn
@@ -29,11 +42,13 @@ var createRouter = function (port) {
             routes[req.method] [req.url] (req, res);
     }).listen(port);
 
-      //expondo requisição
+
+  return api;    
+  /**expondo requisição
       return {
               get: get,
               post: post
-      }
+      }*/
 };
 //modulo. exports e passando uma função assim consigo ir em http chamar router e instancia-lo
 module.exports = createRouter;
